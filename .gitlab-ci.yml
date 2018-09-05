@@ -1,0 +1,9 @@
+image: python:3.6
+
+stages:
+  - unittest
+
+test:
+  stage: unittest
+  script:
+    - pytest test_roman.py --verbose
