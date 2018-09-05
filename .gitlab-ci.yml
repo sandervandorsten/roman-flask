@@ -6,4 +6,5 @@ stages:
 test:
   stage: unittest
   script:
+    - pip install -r requirements.txt
     - pytest test_roman.py --verbose
