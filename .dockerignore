@@ -1,0 +1,7 @@
+.idea/
+venv/
+.pytest_cache/
+__pycache__/
+romanflask/__pycache__/
+romanflask.egg-info/
+.DS_STORE
