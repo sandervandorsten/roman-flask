@@ -7,6 +7,9 @@ stages:
 test:
   stage: testbuild
   script:
+    - apt-get install python3.6
+    - virtualenv -p $(which python3.6) venv
+    - source venv/bin/activate
     - pip install --upgrade pip
     - pip install -r requirements.txt
     - pytest tests/test_roman.py --verbose
