@@ -1,10 +1,23 @@
-image: python:3.6
+image: google/cloud-sdk
 
 stages:
-  - unittest
+  - testbuild
+  - buildpush
 
 test:
-  stage: unittest
+  stage: testbuild
   script:
+    - pip install --upgrade pip
     - pip install -r requirements.txt
     - pytest tests/test_roman.py --verbose
+
+push:
+  stage: buildpush
+  script:
+    - echo $GCLOUD_JSON > credentials.json
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+    - gcloud auth activate-service-account --key-file credentials.json
+    - gcloud app deploy --quiet --project=roman-flask-app
+  only:
+    - master
