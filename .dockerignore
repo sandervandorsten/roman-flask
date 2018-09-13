@@ -4,4 +4,5 @@ venv/
 __pycache__/
 romanflask/__pycache__/
 romanflask.egg-info/
+tests/__pycache__/
 .DS_STORE

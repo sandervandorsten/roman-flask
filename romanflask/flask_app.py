@@ -16,7 +16,7 @@ def create_app():
     def index():
         return 'hello world'
 
-    @app.route('/rom2num/<roman_string>')
+    @app.route('/rom2num/<string:roman_string>')
     def rom2num(roman_string):
         logger.debug('------- Roman to Numeral -------')
         try:
@@ -25,9 +25,10 @@ def create_app():
                 'numeral': roman2num(roman_string)
             })
         except ValueError as e:
+            logger.debug(f"Failed to convert: '{roman_string}, {e}'")
             return Response(str(e), 404)
 
-    @app.route('/num2rom/<numeral>')
+    @app.route('/num2rom/<int:numeral>')
     def num2rom(numeral):
         logger.debug('------- Numeral to Roman -------')
         try:
@@ -39,6 +40,7 @@ def create_app():
                 })
             raise ValueError('integer required')
         except ValueError as e:
+            logger.debug(f"Failed to convert: '{numeral}, {e}'")
             return Response(str(e), 404)
 
     return app
