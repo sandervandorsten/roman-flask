@@ -1,6 +1,12 @@
 import sys
+import logging
+import set_logging
+from operator import itemgetter
 
-def num2roman(n:int, roman_val=''):
+LOGGER = logging.getLogger('roman.mapping')
+
+
+def num2roman(n: int, roman_val=''):
     """Converts a positive arabic number into a roman numeral. #numberArt
 
     :param n: a positive integer you're interested in
@@ -21,7 +27,8 @@ def num2roman(n:int, roman_val=''):
         500: 'D',
         900: 'CM',
         1000: 'M'}
-    print(f" n= {n}, roman = {roman_val}")
+
+    LOGGER.debug(f"numeral = {n}, roman = {roman_val}")
 
     if n == 0:
         return roman_val
@@ -35,7 +42,7 @@ def num2roman(n:int, roman_val=''):
             return num2roman(n, roman_val)
 
 
-def roman2num(s:str, n:int = 0):
+def roman2num(s: str, n: int = 0):
     """Translate roman numbers into numeric
 
     :param s: a string with a roman numeral you want to convert
@@ -57,13 +64,16 @@ def roman2num(s:str, n:int = 0):
         'CM': 900,
         'M': 1000}
 
-    print(f"roman = {s}, n = {n}")
+    LOGGER.debug(f"roman = {s}, n = {n}")
     if s == "":
         return n
     s = s.upper()
 
-    for key, value in sorted(mapping.items(), key= lambda x: x[1], reverse=True):
+    for key, value in sorted(mapping.items(), key=itemgetter(1), reverse=True):
         if s.startswith(key):
+            # check if s is is descending order
+            if 0 < n < value:
+                raise ValueError("You didn't provide a correct input")
             n += value
             s = s.replace(key, "", 1)
             return roman2num(s, n)
@@ -72,6 +82,7 @@ def roman2num(s:str, n:int = 0):
 
 
 if __name__ == "__main__":
+    LOGGER = set_logging.setup_logger(verbose=True)
     to_be_translated = sys.argv[1]
     try:
         to_be_translated = int(to_be_translated)
