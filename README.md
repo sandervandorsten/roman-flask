@@ -1,9 +1,9 @@
-## 1000 ways to Rome and back
+## Roman numeral Converter
 
-This little commandline app that can convert positive arabic numbers into roman numerals.
+Python package that can convert positive arabic numbers into roman numerals and vice versa.
+comes with a CLI and REST API, runnable on the Google Cloud Platform within docker
 
-For example:
+CLI example:
 1. `>>> python roman_mapping.py 42` outputs **XVII**
 2. `>>> python roman_mapping.py MCMXLVIII` outputs **1948**
 
-Going to Rome one step at a time ... 
