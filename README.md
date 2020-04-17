@@ -1,7 +1,9 @@
-## Roman numeral Converter
+## WIP: Roman numeral Converter
 
 Python package that can convert positive arabic numbers into roman numerals and vice versa.
-comes with a CLI and REST API, runnable on the Google Cloud Platform within docker
+Comes with a CLI and REST API, runnable on the Google Cloud Platform within Docker.
+
+Note: Not tested. served for learning purposes only
 
 CLI example:
 1. `>>> python roman_mapping.py 42` outputs **XVII**
