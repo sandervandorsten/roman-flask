@@ -6,6 +6,6 @@ Comes with a CLI and REST API, runnable on the Google Cloud Platform within Dock
 Note: Not tested. served for learning purposes only
 
 CLI example:
-1. `>>> python roman_mapping.py 42` outputs **XVII**
+1. `>>> python roman_mapping.py 42` outputs **XLII**
 2. `>>> python roman_mapping.py MCMXLVIII` outputs **1948**
 
