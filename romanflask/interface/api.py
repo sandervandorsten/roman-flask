@@ -1,5 +1,5 @@
 from flask import Flask, Response, request, jsonify
-from roman_mapping import num2roman, roman2num
+from romanflask.roman_mapping import num2roman, roman2num
 
 import logging
 
@@ -40,5 +40,9 @@ def create_app():
     return app
 
 
-if __name__ == "__main__":
+def main():
     create_app().run()
+
+
+if __name__ == "__main__":
+    main()

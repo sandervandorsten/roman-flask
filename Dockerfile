@@ -13,4 +13,4 @@ RUN pytest
 # add metadata that port 8080 is accessible
 EXPOSE 8080
 
-CMD FLASK_APP=romanflask/flask_app.py flask run --host=0.0.0.0 --port=8080
+CMD FLASK_APP=romanflask/interface.api.py flask run --host=0.0.0.0 --port=8080

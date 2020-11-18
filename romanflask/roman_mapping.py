@@ -1,12 +1,13 @@
-import sys
 import logging
-import set_logging
+import sys
 from operator import itemgetter
 
-LOGGER = logging.getLogger('roman.mapping')
+from romanflask import set_logging
+
+LOGGER = logging.getLogger("roman.mapping")
 
 
-def num2roman(n: int, roman_val=''):
+def num2roman(n: int, roman_val=""):
     """Converts a positive arabic number into a roman numeral. #numberArt
 
     :param n: a positive integer you're interested in
@@ -14,19 +15,20 @@ def num2roman(n: int, roman_val=''):
     :return: a string representing the roman numeral of n
     """
     mapping = {
-        1: 'I',
-        4: 'IV',
-        5: 'V',
-        9: 'IX',
-        10: 'X',
-        40: 'XL',
-        50: 'L',
-        90: 'XC',
-        100: 'C',
-        400: 'CD',
-        500: 'D',
-        900: 'CM',
-        1000: 'M'}
+        1: "I",
+        4: "IV",
+        5: "V",
+        9: "IX",
+        10: "X",
+        40: "XL",
+        50: "L",
+        90: "XC",
+        100: "C",
+        400: "CD",
+        500: "D",
+        900: "CM",
+        1000: "M",
+    }
 
     LOGGER.debug(f"numeral = {n}, roman = {roman_val}")
 
@@ -50,19 +52,20 @@ def roman2num(s: str, n: int = 0):
     :return: the arabic number of your roman numeral
     """
     mapping = {
-        'I': 1,
-        'IV': 4,
-        'V': 5,
-        'IX': 9,
-        'X': 10,
-        'XL': 40,
-        'L': 50,
-        'XC': 90,
-        'C': 100,
-        'CD': 400,
-        'D': 500,
-        'CM': 900,
-        'M': 1000}
+        "I": 1,
+        "IV": 4,
+        "V": 5,
+        "IX": 9,
+        "X": 10,
+        "XL": 40,
+        "L": 50,
+        "XC": 90,
+        "C": 100,
+        "CD": 400,
+        "D": 500,
+        "CM": 900,
+        "M": 1000,
+    }
 
     LOGGER.debug(f"roman = {s}, n = {n}")
     if s == "":
@@ -79,13 +82,3 @@ def roman2num(s: str, n: int = 0):
             return roman2num(s, n)
     # if the letter is not in the dictionary raise an error
     raise ValueError("You didn't provide a correct input.")
-
-
-if __name__ == "__main__":
-    LOGGER = set_logging.setup_logger(verbose=True)
-    to_be_translated = sys.argv[1]
-    try:
-        to_be_translated = int(to_be_translated)
-        num2roman(to_be_translated)
-    except ValueError:
-        roman2num(to_be_translated)

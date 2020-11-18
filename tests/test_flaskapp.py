@@ -1,5 +1,5 @@
 import pytest
-from romanflask.flask_app import create_app
+from romanflask.interface.api import create_app
 
 
 @pytest.fixture
@@ -8,10 +8,10 @@ def test_connection():
 
 
 def test_flask(test_connection):
-    result = test_connection.get('/rom2num/MMMDCCCLVI')
+    result = test_connection.get("/rom2num/MMMDCCCLVI")
     assert result.status_code == 200
 
 
 def test_flask_shouldfail(test_connection):
-    result = test_connection.get('/rom2num/XXMC')
+    result = test_connection.get("/rom2num/XXMC")
     assert result.status_code == 404
